@@ -15,7 +15,10 @@ app.prepare().then(() => {
 
   const io = new Server(server, {
     cors: {
-      origin: "http://localhost:3000",
+      origin:
+        process.env.NODE_ENV === "production"
+          ? process.env.NEXT_PUBLIC_APP_URL || "https://camloop.onrender.com"
+          : "http://localhost:3000",
       methods: ["GET", "POST"],
       credentials: true,
     },
@@ -59,6 +62,12 @@ app.prepare().then(() => {
   const PORT = process.env.PORT ?? 3001;
   server.listen(PORT, () => {
     console.log(`Signaling server running on port ${PORT}`);
-    console.log(`CORS enabled for http://localhost:3000`);
+    console.log(
+      `CORS enabled for ${
+        process.env.NODE_ENV === "production"
+          ? process.env.NEXT_PUBLIC_APP_URL || "https://camloop.onrender.com"
+          : "http://localhost:3000"
+      }`
+    );
   });
 });
