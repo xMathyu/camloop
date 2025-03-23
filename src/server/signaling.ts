@@ -59,7 +59,7 @@ app.prepare().then(() => {
     });
   });
 
-  const PORT = process.env.PORT ?? 3001;
+  const PORT = process.env.SIGNALING_PORT ?? 3001;
   server.listen(PORT, () => {
     console.log(`Signaling server running on port ${PORT}`);
     console.log(
