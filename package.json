@@ -10,8 +10,9 @@
     "server": "ts-node src/server/signaling.ts",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
     "build:all": "npm install && npm run build && npm run build:server",
-    "build:server": "tsc --project tsconfig.server.json",
-    "start:all": "concurrently \"npm run start\" \"node dist/server/signaling.js\""
+    "build:server": "rm -rf dist && mkdir -p dist && tsc --project tsconfig.server.json",
+    "start:server": "node dist/server/signaling.js",
+    "start:all": "concurrently \"npm run start\" \"npm run start:server\""
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.3",
