@@ -9,8 +9,8 @@
     "lint": "next lint",
     "server": "ts-node src/server/signaling.ts",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
-    "build:all": "npm run build && tsc -p tsconfig.server.json",
-    "start:all": "concurrently \"npm run start\" \"node dist/server/signaling.js\""
+    "build:all": "./node_modules/.bin/next build && ./node_modules/.bin/tsc -p tsconfig.server.json",
+    "start:all": "concurrently \"./node_modules/.bin/next start\" \"node dist/server/signaling.js\""
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.3",
